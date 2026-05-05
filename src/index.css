@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 4%;
+    --foreground: 180 10% 90%;
+
+    --card: 220 18% 8%;
+    --card-foreground: 180 10% 90%;
+
+    --popover: 220 18% 8%;
+    --popover-foreground: 180 10% 90%;
+
+    --primary: 168 80% 50%;
+    --primary-foreground: 220 20% 4%;
+
+    --secondary: 220 15% 14%;
+    --secondary-foreground: 180 10% 80%;
+
+    --muted: 220 15% 12%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 142 70% 50%;
+    --accent-foreground: 220 20% 4%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 16%;
+    --input: 220 15% 14%;
+    --ring: 168 80% 50%;
+
+    --radius: 0.5rem;
+
+    --glow-primary: 168 80% 50%;
+    --glow-accent: 142 70% 50%;
+    --warning: 38 90% 55%;
+    --warning-foreground: 220 20% 4%;
+    --success: 142 70% 50%;
+    --info: 200 80% 55%;
+
+    --sidebar-background: 220 18% 6%;
+    --sidebar-foreground: 180 10% 80%;
+    --sidebar-primary: 168 80% 50%;
+    --sidebar-primary-foreground: 220 20% 4%;
+    --sidebar-accent: 220 15% 14%;
+    --sidebar-accent-foreground: 180 10% 80%;
+    --sidebar-border: 220 15% 16%;
+    --sidebar-ring: 168 80% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.15), 0 0 60px hsl(var(--glow-primary) / 0.05);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 20px hsl(var(--glow-accent) / 0.15), 0 0 60px hsl(var(--glow-accent) / 0.05);
+  }
+
+  .glow-border {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.1);
+  }
+
+  .text-gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-grid {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .code-editor {
+    @apply font-mono text-sm leading-relaxed;
+    tab-size: 4;
+  }
+
+  .animate-scan {
+    animation: scan 2s ease-in-out infinite;
+  }
+
+  @keyframes scan {
+    0%, 100% { opacity: 0.3; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(10px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 5px hsl(var(--primary) / 0.2); }
+    50% { box-shadow: 0 0 20px hsl(var(--primary) / 0.4); }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .highlight-match {
+    background-color: hsl(var(--primary) / 0.2);
+    border-left: 3px solid hsl(var(--primary));
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 0 12px hsl(var(--primary) / 0.25);
+    animation: match-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes match-pulse {
+    0%, 100% { background-color: hsl(var(--primary) / 0.15); box-shadow: 0 0 8px hsl(var(--primary) / 0.15); }
+    50% { background-color: hsl(var(--primary) / 0.25); box-shadow: 0 0 16px hsl(var(--primary) / 0.3); }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-1 shadow-xl;
+    box-shadow: 0 8px 30px hsl(var(--primary) / 0.15);
+  }
+
+  .glow-strong {
+    box-shadow: 0 0 30px hsl(var(--glow-primary) / 0.3), 0 0 60px hsl(var(--glow-primary) / 0.15);
+  }
+
+  .bg-radial-gradient {
+    background: radial-gradient(ellipse at top, hsl(var(--primary) / 0.1) 0%, transparent 60%);
+  }
+}
