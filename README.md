@@ -1,4 +1,5 @@
 # 🧬 PARASITE
+> Detects structural code plagiarism using compiler techniques like AST, CFG, and data flow analysis.
 
 ### Compiler-Based Structural Plagiarism Detection System
 
